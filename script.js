@@ -36,7 +36,7 @@ function searchReport() {
     } else {
         // File not found, show an error
         resultDiv.innerHTML = `
-                    <p class="error">⚠️ No result found.${fileName} Please check your details and try again.</p>
+                    <p class="error">⚠️ No result found. Please check your details and try again.</p>
                 `;
     }
 }
