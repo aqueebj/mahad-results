@@ -182,13 +182,13 @@
             if (files.includes(fileName)) {
                 // File found, provide download link
                 resultDiv.innerHTML = `
-                    <p class="success">🎉 Report card found! Click below to download:</p>
+                    <p class="success">🎉 Result found! Click below to download:</p>
                     <a href="report_cards/${fileName}" download>📥 Download ${fileName}</a>
                 `;
             } else {
                 // File not found, show an error
                 resultDiv.innerHTML = `
-                    <p class="error">⚠️ No report card found for "${studentName}" and "${fatherName}". Please check your details and try again.</p>
+                    <p class="error">⚠️ No result found for "${studentName}" and "${fatherName}". Please check your details and try again.</p>
                 `;
             }
         }
