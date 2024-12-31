@@ -13,8 +13,8 @@ fetch('files.json')
 
 function searchReport() {
     // Get input values
-    const studentName = document.getElementById('studentName').value.trim().replace(' ', '_');
-    const fatherName = document.getElementById('fatherName').value.trim().replace(' ', '_');
+    const studentName = document.getElementById('studentName').value.trim().replace(/ /g, '_').toUpperCase();
+    const fatherName = document.getElementById('fatherName').value.trim().replace(/ /g, '_').toUpperCase();
     // Check if the input fields are empty
     if (studentName === "" || fatherName === "") {
         alert("Please enter both student name and father name to search for the score card.");
@@ -36,7 +36,7 @@ function searchReport() {
     } else {
         // File not found, show an error
         resultDiv.innerHTML = `
-                    <p class="error">⚠️ No result found. Please check your details and try again.</p>
+                    <p class="error">⚠️ No result found.${fileName} Please check your details and try again.</p>
                 `;
     }
 }
