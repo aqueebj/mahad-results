@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Report Cards</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 60px;
+            height: 60px;
+            vertical-align: middle;
+            border-radius: 50%;
+        }
+
+        .header h2 {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 24px;
+            vertical-align: middle;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px 30px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Form */
+        form {
+            margin: 20px 0;
+        }
+
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Result Messages */
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="channels4_profile.jpg" alt="Institute Logo"> <!-- Replace with your logo file -->
+        <h2>Mahad Assalam Hyderabad</h2>
+    </div>
+
+    <div class="container">
+        <h1>Alimiyat 1st Semester Score Card</h1>
+        <p>Enter your name and your father's name below to find and download your score card.</p>
+        <!-- In Urdu -->
+        <p>نیچے دیے گئے فارم میں اپنا نام اور اپنے والد کا نام درج کریں تاکہ آپ اپنا اسکور کارڈ ڈاؤن لوڈ کر سکیں۔</p>
+
+        <form id="searchForm" onsubmit="return false;">
+            <input type="text" id="studentName" placeholder="Enter Student Name" required>
+            <input type="text" id="fatherName" placeholder="Enter Father's Name" required>
+            <button onclick="searchReport()">Search</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <footer>
+        &copy; 2024 Mahad Assalam Hyderabad. All Rights Reserved.
+    </footer>
+
+    <script>
+        let files = [];
+
+        // Load JSON file containing report card names
+        fetch('files.json')
+            .then(response => response.json())
+            .then(data => {
+                files = data.fileName;
+                console.log("Files loaded:", files);
+            })
+            .catch(error => {
+                console.error("Error loading files:", error);
+            });
+
+        function searchReport() {
+            // Get input values
+            const studentName = document.getElementById('studentName').value.trim().replace(' ', '_');
+            const fatherName = document.getElementById('fatherName').value.trim().replace(' ', '_');
+
+            // Generate the expected file name
+            const fileName = `${studentName}_${fatherName}.pdf`;
+
+            // Check if the file exists in the list
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ""; // Clear previous messages
+
+            if (files.includes(fileName)) {
+                // File found, provide download link
+                resultDiv.innerHTML = `
+                    <p class="success">🎉 Report card found! Click below to download:</p>
+                    <a href="report_cards/${fileName}" download>📥 Download ${fileName}</a>
+                `;
+            } else {
+                // File not found, show an error
+                resultDiv.innerHTML = `
+                    <p class="error">⚠️ No report card found for "${studentName}" and "${fatherName}". Please check your details and try again.</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
