@@ -13,8 +13,8 @@ fetch('files.json')
 
 function searchReport() {
     // Get input values
-    const studentName = document.getElementById('studentName').value.trim().replace(/ /g, '_').toUpperCase();
-    const fatherName = document.getElementById('fatherName').value.trim().replace(/ /g, '_').toUpperCase();
+    const studentName = document.getElementById('studentName').value.trim().replace(/[^a-zA-Z]/g, '').toUpperCase();
+    const fatherName = document.getElementById('fatherName').value.trim().replace(/[^a-zA-Z]/g, '').toUpperCase();
     // Check if the input fields are empty
     if (studentName === "" || fatherName === "") {
         alert("Please enter both student name and father name to search for the score card.");
