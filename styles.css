@@ -108,6 +108,7 @@ a {
     color: #007BFF;
     text-decoration: none;
     font-weight: bold;
+    overflow-wrap: break-word;
 }
 
 a:hover {
@@ -119,4 +120,34 @@ footer {
     margin-top: 40px;
     font-size: 14px;
     color: #aaa;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.links p {
+    margin: 0.5rem;
+}
+.links button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50%;
+}
+.links button:hover {
+    background-color: #45a049;
+}
+.links button:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+}
+
+.alimiyat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }

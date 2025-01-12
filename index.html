@@ -10,26 +10,34 @@
     <!-- Header -->
     <div class="header">
         <img src="channels4_profile.jpg" alt="Mahad Logo">
-        <h2>Mahad Assalam Hyderabad</h2>
+        <h2>Mahad Assalam Hyderabad, India</h2>
+        <!-- in arabic -->
+        <h2>معهد السلام حيدرآباد، الهند</h2>
     </div>
 
     <div class="container">
-        <h1>Alimiyat 1st Semester Score Card</h1>
-        <p>Enter your name and your father's name below to find and download your score card.</p>
+        <!-- Links for 1st, 2nd and 4th Semester Result -->
+        <div class="alimiyat-header">
+            <h1>Alimiyat Results</h1>
+            <!-- in urdu -->
+            <h1>عالمیہ رزلٹ</h1>
+        </div>
+        <p>Click on the links below to view the result of the respective semester.</p>
         <!-- In Urdu -->
-        <p>نیچے دیے گئے فارم میں اپنا نام اور اپنے والد کا نام درج کریں تاکہ آپ اپنا اسکور کارڈ ڈاؤن لوڈ کر سکیں۔</p>
+        <p>نیچے دیے گئے لنکس پر کلک کریں تاکہ آپ متعلقہ سمسٹر کا رزلٹ دیکھ سکیں۔</p>
 
-        <form id="searchForm" onsubmit="return false;">
-            <input type="text" id="studentName" placeholder="Enter Student Name" required>
-            <input type="text" id="fatherName" placeholder="Enter Father's Name" required>
-            <button onclick="searchReport()">Search</button>
-        </form>
-
-        <div id="result"></div>
+        <div class="links">
+            <button onclick="setSemester('1st')">1st Semester</button>
+            <button onclick="setSemester('2nd')">2nd Semester</button>
+            <p>The results for the following semesters will be available soon</p>
+            <!-- In Urdu -->
+            <p>مندرجہ ذیل سمسٹرز کے نتائج جلد دستیاب ہوں گے</p>
+            <button disabled onclick="setSemester('4th')">4th Semester (Results Pending)</button>
+        </div>
     </div>
 
     <footer>
-        &copy; 2024 Mahad Assalam Hyderabad. All Rights Reserved.
+        &copy; 2025 Mahad Assalam Hyderabad. All Rights Reserved.
     </footer>
 
     <script src="script.js"></script>
